@@ -6,7 +6,7 @@ class Routes {
 	public function __construct($url) 
 	{	
 		// e.g http://~~/sayHi -> http://~~/index.php?url=/sayHi/
-		// explode "/sayHi/" to 'sayHi' as Controller.
+		// explode "/sayHi/" to 'sayHi'
 		$this->params = explode('/', $url);
 		$this->Controller = array_shift($this->params);
 
@@ -15,7 +15,7 @@ class Routes {
 			$fn = $this->Controller;
 			$this->exRequest($_POST);
 			$Controllers = new Controllers($this->Controller,$this->Request);
-			$Controllers->$fn(); //e.g excute Controller::sayHi();
+			$Controllers->$fn(); //e.g excute Controllers::sayHi();
 		}else{
 			Err::getMessage();
 		}
@@ -29,7 +29,8 @@ class Routes {
 			return false;
 		}
 	}
-	// extract data of receiving by post
+	// extract data of recieve by post.
+	// return request data as a object
 	public function exRequest($Request)
 	{
 		if(isset($Request)){

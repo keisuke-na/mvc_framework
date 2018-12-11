@@ -9,6 +9,10 @@ class Controllers {
 		self::$Request = $Request;
 
 	}
+	public function index()
+	{
+		echo 'this is index';
+	}
 	public function sayHi()
 	{
 		return view(self::$Controller);
@@ -21,8 +25,8 @@ class Controllers {
 	{
 		$users = new DB('users');
 		$data = array(
-			'name' => 'Alice',
-			'score' => 50,
+			'name' => 'Ryan',
+			'score' => 80,
 		);
 		$users->create($data);
 		// $data =  $users->findAll();

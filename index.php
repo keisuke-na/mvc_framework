@@ -30,8 +30,6 @@ require_once('./Controllers/ControllersClass.php');
 
 /********************************************************
 Class of database.Easy to hundle database.
-(1): create()
-(2): where()
 ********************************************************/
 require_once('./models/DBClass.php');
 
@@ -42,11 +40,9 @@ quest,when you put "<?= input($property) ?>" on template file.
 ********************************************************/
 require_once('./Views/Views.php');
 
-
-if(isset($_GET['url']))
-{
-	$Route = new Routes($_GET['url']);
-}
+// e.g. http://000.000.00.00/ => http://000.000.00.00/index
+$url = (isset($_GET['url'])) ? $_GET['url'] : 'index';
+$Route = new Routes($url);
 
 //database
 // define('DB_DATABESE', 'mvc_lessons');
