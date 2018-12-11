@@ -1,7 +1,7 @@
 <?php
-function view($Controller) 
+function view() 
 {
-	include('./resources/' . $Controller . '.php');
+	include('./resources/' . Controllers::$Controller . '.php');
 }
 
 function input($property)

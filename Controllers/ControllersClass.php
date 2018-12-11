@@ -11,15 +11,15 @@ class Controllers {
 	}
 	public function index()
 	{
-		echo 'this is index';
+		return view();
 	}
 	public function sayHi()
 	{
-		return view(self::$Controller);
+		return view();
 	}
 	public function top()
 	{
-		return view(self::$Controller);
+		return view();
 	}
 	public function db() 
 	{
