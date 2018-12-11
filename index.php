@@ -214,17 +214,3 @@ $Route = new Routes($url);
 
 // echo warizan(6,0); // 
 ?>
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-<form method="post">
-	<input type="hidden" value="this is name" name="name">
-	<input type="hidden" value="this is age" name="age">
-	<input type="hidden" value="this is gender" name="gender">
-	<input type="submit">
-</form>
-</body>
-</html> -->

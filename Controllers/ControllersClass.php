@@ -11,7 +11,9 @@ class Controllers {
 	}
 	public function index()
 	{
-		return view();
+		$blogs = new DB('blogs');
+		$datas =  $blogs->findAll();
+		return view($datas);
 	}
 	public function sayHi()
 	{
@@ -23,13 +25,13 @@ class Controllers {
 	}
 	public function db() 
 	{
-		$users = new DB('users');
-		$data = array(
-			'name' => 'Ryan',
-			'score' => 80,
-		);
-		$users->create($data);
-		// $data =  $users->findAll();
+		// $blogs = new DB('blogs');
+		// $data = array(
+		// 	'title' => 'title3',
+		// 	'body' => 'body3',
+		// );
+		// $blogs->create($data);
+		// $data =  $blogs->findAll();
 		// var_dump($data);
 		// var_dump($data);
 		// $data =  $users->findId('16');

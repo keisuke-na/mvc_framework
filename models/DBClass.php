@@ -26,7 +26,7 @@ class DB {
 	// return row data as object
 	public function findAll()
 	{
-		$stmt = $this->db->prepare("select * from {$this->table}");
+		$stmt = $this->db->prepare("select * from {$this->table} order by id desc");
 		$stmt->execute();
 		$data = $stmt->fetchAll(PDO::FETCH_CLASS, "Data");
 		return $data;
