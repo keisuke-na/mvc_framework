@@ -3,7 +3,7 @@ class DB {
 	private $table;
 	private $db;
 	private $where;
-	private $data;
+	public static $datas;
 	public function __construct($table)
 	{
 		try {
@@ -29,15 +29,19 @@ class DB {
 		$stmt = $this->db->prepare("select * from {$this->table} order by id desc");
 		$stmt->execute();
 		$data = $stmt->fetchAll(PDO::FETCH_CLASS, "Data");
+		self::$datas = $data;
 		return $data;
 	}
 	// return row data as object
 	public function findId($id)
 	{	
 		$stmt = $this->db->prepare("select * from {$this->table} where id = :id");
-		$stmt->execute([':id' => $id]);
+		$stmt->execute([':id' => $id]);	
+		if(!$stmt->rowCount()) return;
 		$data = $stmt->fetchAll(PDO::FETCH_CLASS, "Data")[0]; // Should I use foreach?
+		
 		$data->where(['id' => $id]);
+		self::$datas = $data;
 		return $data;
 	}
 	public function create($data)
@@ -126,5 +130,10 @@ class Data {
 		}
 		self::$where = $condition;
 	}
+}
+
+function db($property)
+{
+	return (isset(DB::$datas->$property)) ? DB::$datas->$property : '<br>d(*´･ω･`)what?';
 }
 ?>

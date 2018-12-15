@@ -40,9 +40,76 @@ quest,when you put "<?= input($property) ?>" on template file.
 ********************************************************/
 require_once('./Views/Views.php');
 
-// e.g. http://000.000.00.00/ => http://000.000.00.00/index
-$url = (isset($_GET['url'])) ? $_GET['url'] : 'index';
-$Route = new Routes($url);
+/********************************************************
+e.g. dire($extension,$filename) -> dire('css','styles.css')
+	 return './public/css/styles.css'
+e.g. easy to put directory. 
+<link rel="stylesheet"...href="<?= dire('css','styles')">
+********************************************************/
+require_once('./Config/Redirect.php');
+
+Routes::route('index', 'Index@show');
+Routes::route('post/{id}', 'Post@show');
+Routes::route('post/create', 'Post@create');
+Routes::route('posts', 'Post@store');
+Routes::route('post/{year}/{month}/{date}/{name}', 'Post@show');
+echo '(*´･ω･`) Not found';
+
+// $ary = array(0 => 'post');
+// $ary[1] = (isset($ary[1])) ? $ary[1] : false;
+// var_dump($ary);
+
+// // echo $get()->month;
+// $url = 'post/2018/12/3/keven';
+// $templt = 'post/{year}/{month}/{date}/{name}';
+// $verifyUrl = function($url,$templt)
+// {	
+// 	//e.g. 'post/2018/12/3/keven'
+// 	$url = explode('/', $url);
+// 	$urlCnt = count($url); // 5
+
+// 	// e.g. 'post/{year}/{month}/{date}/{name}'
+// 	$templt = explode('/', $templt);
+// 	$templtCnt = count($templt); // 5
+// 	if( $urlCnt != $templtCnt ) return false; // 5 = 5 true
+
+// 	//e.g. 'post/{year}/{month}/{date}/{name}'
+// 	$rets = preg_grep("/[^{.*}]$/",$templt); // post
+// 	$retsCnt = count($rets); // 1
+
+// 	//e.g. $templt[0] == $rests[0] -> post == post -> true
+// 	for($i=0; $i < $retsCnt; $i++){
+// 		if($url[$i] != $rets[$i]) return false;
+// 	}
+// 	return true;
+// };
+// var_dump($verify($url,$templt));
+
+// $get = function()
+// {
+// 	$obj = (object)['name' => 'keisuke','age' => 28];
+// 	return $obj;
+// };
+// echo $get()->name;
+// echo $_GET['url'];
+
+// post/{id}
+// $url = 'posts/{postid}';
+// $params = explode('/',$url);
+// $id = str_replace(array('{','}'),"",$params[count($params)-1]);
+// $ary = (object)array(
+// 	$id => '775'
+// );
+// var_dump($ary);
+// echo "<br>";
+// echo $ary->postid;
+// // echo $id;
+// // var_dump($params);
+// function request()
+// {
+// 	$params = explode('/', $_GET['url']);
+// 	var_dump($params);
+// }
 
 //database
 // define('DB_DATABESE', 'mvc_lessons');

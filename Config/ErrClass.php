@@ -5,10 +5,12 @@ class Err {
 	{
 		try{
 			if(!$bool) throw new Exception($message);
+
 			return true;
 		} catch(Exception $e) {
 			self::$e = $e->getMessage();
-			return false;
+			self::getMessage();
+			exit;
 		}
 	}
 
